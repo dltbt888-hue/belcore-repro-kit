@@ -1,0 +1,155 @@
+// Hand-written, fixed seeds. Turns 1-10 plant all 8 fake facts; turns 11-100 are
+// generated exactly once by gen-scenarios.mjs and then locked (scenarios/LOCK.json).
+// Grading rule (fixed before any run): a recall answer is correct iff, after
+// normalize() (NFKC, lowercase, all whitespace removed), EVERY group in `answer`
+// has at least one alternative that is a substring of the reply.
+// All people, orders, and places here are fictional.
+
+export const SCENARIOS = [
+  {
+    id: "support",
+    title: "고객지원",
+    system:
+      "너는 인터넷 서비스 회사 '누리넷'의 고객지원 상담원이다. 한국어로 친절하고 간결하게(3문장 이내) 답한다.",
+    topic:
+      "공유기 끊김 문제 해결 과정: 재부팅, 채널 변경, 펌웨어, 속도 측정, 요금제, 교체 절차, 기사 방문 준비 등 고객지원 대화",
+    seedTurns: [
+      "안녕하세요, 인터넷이 자꾸 끊겨서 문의드려요. 저는 한도윤이라고 합니다.",
+      "지난달에 공유기를 새로 샀는데 주문번호가 7Q-4812예요.",
+      "모델은 누리 AX5고요, 설치한 지 3주 됐어요.",
+      "저녁 8시쯤부터 특히 심하게 끊기는 것 같아요.",
+      "연락은 카톡 말고 문자로 주시면 좋겠어요. 카톡은 잘 안 봐서요.",
+      "집은 망원동 쪽 빌라 3층이에요.",
+      "기사님 방문이 필요하면 목요일 오후 3시가 제일 편해요.",
+      "아 그리고 집에 콩떡이라는 고양이가 있는데 낯을 많이 가려서 문 열 때 조심해 주셔야 해요.",
+      "혹시 교체가 안 되면 환불도 가능한가요? 환불 계좌는 케이뱅크예요.",
+      "일단 오늘 제가 직접 해볼 수 있는 조치가 있으면 알려주세요.",
+    ],
+    recall: [
+      { id: "name", factTurn: 1, question: "제 이름 기억하세요? 성함을 말씀해 주세요.", answer: [["한도윤"]] },
+      { id: "order", factTurn: 2, question: "제 주문번호가 뭐였죠?", answer: [["4812"]] },
+      { id: "model", factTurn: 3, question: "제 공유기 모델명이 뭐였죠?", answer: [["ax5"]] },
+      { id: "contact", factTurn: 5, question: "제가 선호한다고 한 연락 방법이 뭐였죠?", answer: [["문자", "sms"]] },
+      { id: "area", factTurn: 6, question: "제가 사는 동네가 어디라고 했죠? 동 이름으로 말씀해 주세요.", answer: [["망원"]] },
+      { id: "visit", factTurn: 7, question: "기사님 방문이 편하다고 한 요일과 시간이 언제였죠?", answer: [["목요일"], ["3시", "15시", "세시", "15:00"]] },
+      { id: "pet", factTurn: 8, question: "우리 집 고양이 이름이 뭐였죠?", answer: [["콩떡"]] },
+      { id: "bank", factTurn: 9, question: "환불 계좌 은행이 어디라고 했죠?", answer: [["케이뱅크", "k뱅크", "kbank"]] },
+    ],
+  },
+  {
+    id: "coaching",
+    title: "코칭",
+    system: "너는 러닝 코치다. 한국어로 따뜻하지만 간결하게(3문장 이내) 조언한다.",
+    topic:
+      "하프마라톤 준비 코칭: 주간 훈련, 페이스, 스트레칭, 수면, 신발, 날씨, 동기부여, 기록 점검, 회복 등",
+    seedTurns: [
+      "안녕하세요 코치님, 서지안이라고 해요. 달리기 코칭 받아보고 싶어서요.",
+      "목표는 11월에 있는 춘천마라톤 하프 완주예요.",
+      "지금 10km 최고 기록은 58분 정도예요.",
+      "예전에 왼쪽 무릎을 다친 적이 있어서 내리막에선 좀 불안해요.",
+      "평일엔 화요일, 주말엔 토요일만 제대로 시간 낼 수 있어요.",
+      "솔직히 트레드밀은 너무 지루해서 싫어요. 밖에서 뛰는 게 좋아요.",
+      "요즘 잠을 잘 못 자서 컨디션이 들쑥날쑥해요.",
+      "저 유당불내증이 있어서 우유 들어간 보충식은 못 먹어요.",
+      "보통 새벽 5시 반에 일어나서 출근 전에 뛰어요.",
+      "그럼 이번 주는 뭐부터 하면 될까요?",
+    ],
+    recall: [
+      { id: "name", factTurn: 1, question: "제 이름이 뭐였죠?", answer: [["서지안"]] },
+      { id: "race", factTurn: 2, question: "제 목표 대회가 뭐였죠?", answer: [["춘천"]] },
+      { id: "record", factTurn: 3, question: "제 10km 최고 기록이 얼마였죠?", answer: [["58"]] },
+      { id: "injury", factTurn: 4, question: "제가 예전에 다쳤다고 한 부위가 어디였죠?", answer: [["왼"], ["무릎"]] },
+      { id: "days", factTurn: 5, question: "제가 훈련 시간을 낼 수 있다고 한 요일이 언제였죠?", answer: [["화요일"], ["토요일"]] },
+      { id: "dislike", factTurn: 6, question: "제가 싫어한다고 한 운동 방식이 뭐였죠?", answer: [["트레드밀", "러닝머신"]] },
+      { id: "diet", factTurn: 8, question: "제가 못 먹는다고 한 음식이 뭐였고 이유가 뭐였죠?", answer: [["유당", "우유"]] },
+      { id: "wake", factTurn: 9, question: "제가 보통 몇 시에 일어난다고 했죠?", answer: [["5시반", "5시30", "5:30", "다섯시반"]] },
+    ],
+  },
+  {
+    id: "companion",
+    title: "컴패니언",
+    system: "너는 사용자의 다정한 친구 같은 대화 상대다. 반말로 짧고 자연스럽게(3문장 이내) 대답한다.",
+    topic:
+      "친구와의 일상 수다: 오늘 하루, 날씨, 드라마, 게임, 회사 일, 산책, 쇼핑, 고민, 주말 계획, 소소한 농담 등",
+    seedTurns: [
+      "안녕! 나 그냥 모카라고 불러줘. 친구들이 다 그렇게 불러.",
+      "오늘 좀 심심해서 말 걸어봤어.",
+      "나 생일이 3월 14일이야. 화이트데이랑 겹쳐서 좀 억울해 ㅋㅋ",
+      "제일 좋아하는 음식은 마라탕! 일주일에 두 번은 먹는 듯.",
+      "우리 집 강아지 이름은 호두야. 푸들인데 엄청 활발해.",
+      "여동생 수빈이랑은 요즘 좀 싸웠어.",
+      "요즘 잔나비 노래만 계속 듣고 있어.",
+      "나 비행기 타는 게 진짜 무서워. 이륙할 때 손에 땀나.",
+      "근데 다음 달에 제주도 여행 가기로 했어. 그래서 벌써 걱정이야.",
+      "넌 요즘 어때?",
+    ],
+    recall: [
+      { id: "nickname", factTurn: 1, question: "나 뭐라고 불러달라고 했지?", answer: [["모카"]] },
+      { id: "birthday", factTurn: 3, question: "내 생일 언제라고 했지?", answer: [["3월14", "3/14"]] },
+      { id: "food", factTurn: 4, question: "내가 제일 좋아하는 음식 뭐였지?", answer: [["마라탕"]] },
+      { id: "dog", factTurn: 5, question: "우리 집 강아지 이름 기억나?", answer: [["호두"]] },
+      { id: "sister", factTurn: 6, question: "내 여동생 이름 뭐였지?", answer: [["수빈"]] },
+      { id: "music", factTurn: 7, question: "내가 요즘 계속 듣는다던 가수 누구였지?", answer: [["잔나비"]] },
+      { id: "fear", factTurn: 8, question: "내가 무서워한다고 한 게 뭐였지?", answer: [["비행기"]] },
+      { id: "trip", factTurn: 9, question: "내가 다음 달에 어디 간다고 했지?", answer: [["제주"]] },
+    ],
+  },
+  {
+    id: "project",
+    title: "프로젝트 도우미",
+    system: "너는 소프트웨어 프로젝트 관리를 돕는 도우미다. 한국어로 간결하게(3문장 이내) 답한다.",
+    topic:
+      "웹 프로젝트 진행: 할 일 정리, 기능 우선순위, 버그, 테스트, 배포, 코드 리뷰, 문서화, 일정 조율, 리스크 관리 등",
+    seedTurns: [
+      "새 프로젝트 정리 좀 도와줘. 코드명은 '등대'로 정했어.",
+      "마감은 10월 24일이야. 그날 고객사에 데모해야 해.",
+      "고객사는 해솔물산이라는 중견 무역회사야.",
+      "프런트는 React 말고 Svelte로 하기로 했어. 팀이 그게 더 익숙해서.",
+      "DB는 일단 SQLite로 시작하고 나중에 옮길지 볼 거야.",
+      "디자인은 박하윤 님이 맡아. 피그마로 시안 주기로 했어.",
+      "서버비 예산은 월 30만 원 안쪽으로 맞춰야 해.",
+      "주간 회의는 매주 월요일 오전 10시에 해.",
+      "지금 가장 걱정되는 건 일정이 너무 빡빡하다는 거야.",
+      "첫 주에 할 일 목록부터 뽑아줄래?",
+    ],
+    recall: [
+      { id: "codename", factTurn: 1, question: "우리 프로젝트 코드명이 뭐였지?", answer: [["등대"]] },
+      { id: "deadline", factTurn: 2, question: "마감일이 언제였지?", answer: [["10월24", "10/24"]] },
+      { id: "client", factTurn: 3, question: "고객사 이름이 뭐였지?", answer: [["해솔"]] },
+      { id: "frontend", factTurn: 4, question: "프런트엔드 프레임워크는 뭘로 하기로 했지?", answer: [["svelte", "스벨트"]] },
+      { id: "db", factTurn: 5, question: "DB는 뭘로 시작하기로 했지?", answer: [["sqlite"]] },
+      { id: "designer", factTurn: 6, question: "디자인 담당자 이름이 뭐였지?", answer: [["하윤"]] },
+      { id: "budget", factTurn: 7, question: "서버비 예산이 얼마였지?", answer: [["30만"]] },
+      { id: "meeting", factTurn: 8, question: "주간 회의가 언제였지?", answer: [["월요일"], ["10시", "열시"]] },
+    ],
+  },
+  {
+    id: "counsel",
+    title: "일반 상담",
+    system: "너는 공감적인 일반 상담사다. 한국어 존댓말로 차분하고 간결하게(3문장 이내) 답한다.",
+    topic:
+      "스트레스와 일상 고민 상담: 수면, 감정 기복, 인간관계, 직장 피로, 휴식 방법, 운동, 식습관, 자기돌봄, 작은 목표 등",
+    seedTurns: [
+      "안녕하세요. 최윤서예요. 요즘 마음이 좀 복잡해서 이야기 나누고 싶어요.",
+      "저는 대전에서 초등학교 교사로 일하고 있어요.",
+      "가장 힘든 건 윗집 층간소음이에요. 밤마다 쿵쿵거려서 잠을 못 자요.",
+      "그나마 뜨개질할 때는 마음이 좀 가라앉아요.",
+      "커피는 하루에 세 잔 정도 마시는 것 같아요.",
+      "11월 9일에 남동생 결혼식이 있어서 그것도 신경 쓰이고요.",
+      "아, 저 복숭아 알레르기가 있어서 결혼식 음식도 좀 걱정돼요.",
+      "주변 사람들한테는 괜찮은 척하게 돼요.",
+      "요즘은 학부모 상담 시즌이라 더 지쳐요.",
+      "어떻게 하면 좀 나아질 수 있을까요?",
+    ],
+    recall: [
+      { id: "name", factTurn: 1, question: "제 이름 기억하세요?", answer: [["윤서"]] },
+      { id: "job", factTurn: 2, question: "제 직업이 뭐라고 했죠?", answer: [["교사", "초등"]] },
+      { id: "city", factTurn: 2, question: "제가 사는 도시가 어디라고 했죠?", answer: [["대전"]] },
+      { id: "sleep", factTurn: 3, question: "제가 잠을 못 자는 가장 큰 이유가 뭐였죠?", answer: [["층간소음", "윗집"]] },
+      { id: "hobby", factTurn: 4, question: "제가 마음이 가라앉는다고 한 활동이 뭐였죠?", answer: [["뜨개질"]] },
+      { id: "coffee", factTurn: 5, question: "커피를 하루에 몇 잔 마신다고 했죠?", answer: [["세잔", "3잔"]] },
+      { id: "wedding", factTurn: 6, question: "남동생 결혼식이 언제였죠?", answer: [["11월9일", "11/9", "11/09", "11월09"]] },
+      { id: "allergy", factTurn: 7, question: "제가 알레르기가 있다고 한 음식이 뭐였죠?", answer: [["복숭아"]] },
+    ],
+  },
+]

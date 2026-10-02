@@ -1,0 +1,23 @@
+{
+  "version": "gateway-2026-09-30-50d96241",
+  "fetchedAt": "2026-09-30T20:21:12.253Z",
+  "model": "openai/gpt-4o-mini",
+  "pricing": {
+    "input": "0.00000015",
+    "output": "0.0000006",
+    "input_cache_read": "0.000000075",
+    "web_search": "10",
+    "service_tiers": {
+      "priority": {
+        "input": "0.00000025",
+        "output": "0.000001",
+        "input_cache_read": "0.000000125"
+      }
+    },
+    "fast": {
+      "input": "0.00000025",
+      "output": "0.000001",
+      "input_cache_read": "0.000000125"
+    }
+  }
+}

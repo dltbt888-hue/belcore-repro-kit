@@ -1,0 +1,12 @@
+{
+  "createdAt": "2026-09-29T18:55:08.682Z",
+  "generatorModel": "openai/gpt-4.1-mini",
+  "graderVersion": "keyword-substring-v1",
+  "files": {
+    "support.json": "2c33fddf2754cf1f1f9b0039bb022fbef747bc46d59a7601f5a3de724ce94c54",
+    "coaching.json": "5eb09135194a8216fb2754d86f677bfb7301035c5ebb0822497f29c3a744e698",
+    "companion.json": "3ca0abe55ee2603d2f537457857b62a77ca66c87da09513c9c3b7550a0509a29",
+    "project.json": "043d96441cc6be794c670d47d1d41fa2c4486761432b8e8c40c0b16b7ad699ba",
+    "counsel.json": "f1528771a9514081511bd3368d92103cfbe0e174517ea9df406a1995b8d57336"
+  }
+}

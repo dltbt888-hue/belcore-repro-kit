@@ -1,0 +1,62 @@
+{
+  "runId": "full-2026-10-01T00-45-16-888Z",
+  "phase": "full",
+  "smoke": false,
+  "startedAt": "2026-10-01T00:45:16.888Z",
+  "git": {
+    "localHead": "ad76301728675929709120abdc795722b0e78eaa",
+    "branch": "v0/belcore-next",
+    "originMain": "ddb8e35b631f77f3f03f6b22d7aa9eec4315379c",
+    "productionDeploymentSha": null
+  },
+  "config": {
+    "model": "openai/gpt-4o-mini",
+    "temperature": "not sent in any arm (provider default); /api/v1/chat has no temperature parameter",
+    "arms": {
+      "A": "full history every turn, direct AI Gateway call, no memory layer",
+      "B": "belcore https://belcore.xyz/api/v1/chat, stateless (no emotion, no endUserId), full history sent, engine trims",
+      "C": "last 10 turns (20 messages) + current message, direct AI Gateway call"
+    },
+    "armsRun": [
+      "A",
+      "B",
+      "C"
+    ],
+    "nList": [
+      10,
+      30,
+      60,
+      100
+    ],
+    "reps": 3,
+    "turnIntervalMs": 8000,
+    "maxAttemptsPerCall": 4,
+    "concurrency": 24,
+    "recallProbe": "each question sent once after turn N, appended to the arm's context, not added to history",
+    "graderVersion": "keyword-substring-v1",
+    "pricingVersion": "gateway-2026-10-01-50d96241",
+    "scenarios": [
+      {
+        "id": "support",
+        "sha256": "2c33fddf2754cf1f1f9b0039bb022fbef747bc46d59a7601f5a3de724ce94c54"
+      },
+      {
+        "id": "coaching",
+        "sha256": "5eb09135194a8216fb2754d86f677bfb7301035c5ebb0822497f29c3a744e698"
+      },
+      {
+        "id": "companion",
+        "sha256": "3ca0abe55ee2603d2f537457857b62a77ca66c87da09513c9c3b7550a0509a29"
+      },
+      {
+        "id": "project",
+        "sha256": "043d96441cc6be794c670d47d1d41fa2c4486761432b8e8c40c0b16b7ad699ba"
+      },
+      {
+        "id": "counsel",
+        "sha256": "f1528771a9514081511bd3368d92103cfbe0e174517ea9df406a1995b8d57336"
+      }
+    ],
+    "belcoreKey": "env BELCORE_BENCH_API_KEY (value never logged or stored)"
+  }
+}
